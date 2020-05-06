@@ -2,9 +2,7 @@
     "name": "panda-studios/ps-env",
     "description": "Panda Studios Env Generator",
     "type": "library",
-    "require": {
-        "illuminate/support": "^8.0@dev"
-    },
+    "require": {},
     "license": "MIT",
     "autoload": {
         "psr-4": {
