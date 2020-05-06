@@ -1,0 +1,21 @@
+{
+    "name": "panda-studios/ps-env",
+    "description": "Panda Studios Env Generator",
+    "type": "library",
+    "require": {
+        "illuminate/support": "^8.0@dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PandaStudios\\PSEnv\\" : "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "soheilsalah",
+            "email": "soheilsalah2@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
