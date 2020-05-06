@@ -9,6 +9,13 @@
             "PandaStudios\\PSEnv\\" : "src"
         }
     },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "PandaStudios\\PSEnv\\Providers\\PSEnvServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "soheilsalah",
