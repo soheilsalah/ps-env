@@ -6,7 +6,7 @@
 
 <ol>
     <li>First run the following command <code style="color:red;">composer require panda-studios/ps-env</code></li>
-    <li>Second download this commands directory and place in app>Console directory <a href="">click here to download</a></li>
+    <li>Second download this commands directory and place in app>Console directory <a href="https://drive.google.com/open?id=1u70XPQVsoOda3ItB6Ciw6n7pn_634aw8">click here to download</a></li>
     <li>Third download the package via composer <code style="color:red;">composer require panda-studios/ps-env</code></li>
     <li>Finally run the following artisan command <code style="color:red;">php artisan ps-env:create</code></li>
     <li>It will generate the following directories & files</li>
