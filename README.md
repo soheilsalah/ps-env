@@ -6,7 +6,7 @@
 
 <ol>
     <li>First run the following command <code style="color:red;">composer require panda-studios/ps-env</code></li>
-    <li>Second run download this commands directory and place in app>Console directory <a href="">click here to download</a></li>
+    <li>Second download this commands directory and place in app>Console directory <a href="">click here to download</a></li>
     <li>Third download the package via composer <code style="color:red;">composer require panda-studios/ps-env</code></li>
     <li>Finally run the following artisan command <code style="color:red;">php artisan ps-env:create</code></li>
     <li>It will generate the following directories & files</li>
@@ -16,7 +16,13 @@
             <li>assets directory</li>
             <ul>
                 <li>script directory</li>
+                <ul>
+                    <li>index blade file</li>
+                </ul>
                 <li>style directory</li>
+                <ul>
+                    <li>index blade file</li>
+                </ul>
                 <li>script blade file</li>
                 <li>style blade file</li>
             </ul>
