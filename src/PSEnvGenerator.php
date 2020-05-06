@@ -6,6 +6,6 @@ class PSEnvGenerator
 {
     public function create()
     {
-        echo 'creating';
+        dd("PSEnv Generator");
     }
 }
