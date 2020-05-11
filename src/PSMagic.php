@@ -251,4 +251,134 @@ class PSMagic
             return 'web.php status .... success';
         }
     }
+
+    public function createModel($endpoint, $model)
+    {
+        $model = \explode('.', $model);
+        
+        // To filter the dots (.) from the string
+        \array_filter($model);
+
+        // If the view is not in sub directory e.g view>folder_1>folder_x>...>blade file name
+        if(count($model) == 1)
+        {
+            // model directory path
+            $model_file_path = $this->model.DIRECTORY_SEPARATOR.\ucfirst(end($model)).'.php';
+            
+            $namespace = 'App\\Models;';
+            $classname = \ucfirst(end($model));
+            
+            // Sub directory path
+            $model_path = $this->model;
+            
+            if(!\file_exists($this->model))
+            {
+                \mkdir($this->model);
+            }
+
+            // Check if model file is exists
+            if(!\file_exists($model_file_path))
+            {
+                // Create the model file inside the sub directory folder(s) 
+                $model_file = \fopen($model_file_path, 'w+');
+                
+                // Load the model file content
+                $PSEnvContent = new PSEnvContent();
+                \fwrite($model_file, $PSEnvContent->model($namespace, $classname));
+    
+                return 'model status .... success';
+            }
+            else
+            {
+                return 'model status .... already exists';
+            }
+        }
+        // If the view is in sub directory e.g view>folder_1>folder_x>...>blade file name
+        else
+        {
+            if($endpoint == false)
+            {
+                // model directory path
+                $model_file_path = $this->model.DIRECTORY_SEPARATOR.\implode(DIRECTORY_SEPARATOR, array_map('ucfirst', $model)).'.php';
+                  
+                array_pop($model);
+
+                $namespace = 'App\\Models\\'.implode('\\', array_map('ucfirst', $model)).';';
+                $classname = \ucfirst(end($model));
+
+                // Sub directory path
+                $model_path = $this->model.DIRECTORY_SEPARATOR.\implode(DIRECTORY_SEPARATOR, array_map('ucfirst', $model));
+                
+                // Check if sub directory is exists
+                if(!\file_exists($model_path))
+                {
+                    // Create the sub directory folder(s)
+                    \mkdir($model_path, 0777, true);
+                }
+
+                // Check if model file is exists
+                if(!\file_exists($model_file_path))
+                {
+                    // Create the model file inside the sub directory folder(s) 
+                    $model_file = \fopen($model_file_path, 'w+');
+                    
+                    // Load the model file content
+                    $PSEnvContent = new PSEnvContent();
+                    \fwrite($model_file, $PSEnvContent->model($namespace, $classname));
+        
+                    return 'model status .... success';
+                }
+                else
+                {
+                    return 'model status .... already exists';
+                }
+            }
+            else
+            {
+                $last_elm = end($model);
+
+                if($last_elm === $endpoint)
+                {
+                    array_pop($model);
+                    
+                    // model directory path
+                    $model_file_path = $this->model.DIRECTORY_SEPARATOR.\implode(DIRECTORY_SEPARATOR, array_map('ucfirst', $model)).DIRECTORY_SEPARATOR.\ucfirst(end($model)).'.php';
+                    
+                    $namespace = 'App\\Models\\'.implode('\\', array_map('ucfirst', $model)).';';
+                    $classname = \ucfirst(end($model));
+
+                    // Sub directory path
+                    $model_path = $this->model.DIRECTORY_SEPARATOR.\implode(DIRECTORY_SEPARATOR, array_map('ucfirst', $model));
+                    
+                    // Check if sub directory is exists
+                    if(!\file_exists($model_path))
+                    {
+                        // Create the sub directory folder(s)
+                        \mkdir($model_path, 0777, true);
+                    }
+
+                    // Check if model file is exists
+                    if(!\file_exists($model_file_path))
+                    {
+                        // Create the model file inside the sub directory folder(s) 
+                        $model_file = \fopen($model_file_path, 'w+');
+                        
+                        // Load the model file content
+                        $PSEnvContent = new PSEnvContent();
+                        \fwrite($model_file, $PSEnvContent->model($namespace, $classname));
+            
+                        return 'model status .... success';
+                    }
+                    else
+                    {
+                        return 'model status .... already exists';
+                    }
+                }
+                else
+                {
+                    return 'error in endpointing';
+                }
+            }
+        }
+    }
 }

@@ -4,9 +4,19 @@ namespace PandaStudios\PSEnv;
 
 class PSEnvContent
 {
-    public function model()
+    public function model($namspace='', $classname='')
     {
-        # code...
+        $model_content = <<<EOT
+        <?php\n
+        namespace $namspace\n
+        use Illuminate\Database\Eloquent\Model;\n
+        class $classname extends Model
+        {
+            protected \$table = '';
+        }
+        EOT;
+
+        return $model_content;
     }
 
     public function view($title, $asset, $layout)
